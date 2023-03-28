@@ -1,29 +1,19 @@
 import React from 'react';
-import { Card, CardMedia, Grid } from '@mui/material';
+import { StyledCard } from './GameCard.styles';
+import { CardMedia, Grid } from '@mui/material';
 
 const GameCard: React.FC<CardType> = ({ id, img }) => {
 	return (
 		<Grid item xs={1}>
-			<Card
-				raised
-				sx={{
-					maxWidth: '100%',
-					aspectRatio: '1',
-					display: 'flex',
-					alignItems: 'center',
-					justifyContent: 'center',
-					padding: 1,
-					cursor: 'pointer',
-				}}
-			>
+			<StyledCard raised>
 				<CardMedia
 					component="img"
 					image={img}
 					alt={img}
 					height="75%"
-					sx={{ objectFit: 'contain' }}
+					sx={{ objectFit: 'contain', pointerEvent: 'none' }}
 				/>
-			</Card>
+			</StyledCard>
 		</Grid>
 	);
 };
