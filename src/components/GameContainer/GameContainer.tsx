@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { CARDS_DATA } from '../../utils/constants/cards';
 import GameCard from '../GameCard/GameCard';
 import { Box, Grid, Typography } from '@mui/material';
+import AlertDialog from '../AlertDialog/AlertDialog';
 
 const GameContainer = () => {
 	const [cards, setCards] = useState<CardType[]>(
@@ -10,6 +11,7 @@ const GameContainer = () => {
 	const [previousClickedCard, setPreviousClickedCard] =
 		useState<previousClickedCardType | null>(null);
 	const [score, setScore] = useState<number>(0);
+	const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
 
 	const flashScreen = (timer: number, index1?: number, index2?: number) => {
 		setTimeout(() => {
@@ -33,9 +35,15 @@ const GameContainer = () => {
 
 	const matchCards = (clickedCardIndex: number) => {
 		if (cards[clickedCardIndex].variant === previousClickedCard?.variant) {
+			setIsDialogOpen(true);
+			if (score < 9) {
+				setTimeout(() => {
+					setIsDialogOpen(false);
+				}, 800);
+			}
 			setScore((prevScore) => prevScore + 1);
 		} else {
-			flashScreen(500, previousClickedCard?.index, clickedCardIndex);
+			flashScreen(100, previousClickedCard?.index, clickedCardIndex);
 		}
 	};
 
@@ -50,8 +58,10 @@ const GameContainer = () => {
 		});
 
 		if (previousClickedCard !== null) {
-			matchCards(clickedCardIndex);
-			setPreviousClickedCard(null);
+			setTimeout(() => {
+				matchCards(clickedCardIndex);
+				setPreviousClickedCard(null);
+			}, 360);
 		} else {
 			setPreviousClickedCard({
 				variant: cards[clickedCardIndex].variant,
@@ -79,6 +89,15 @@ const GameContainer = () => {
 					})}
 				</Grid>
 			</Box>
+			{score < 10 ? (
+				<AlertDialog
+					title="Card Matched"
+					text="Score+1"
+					isDialogOpen={isDialogOpen}
+				/>
+			) : (
+				<AlertDialog title="Game End" isDialogOpen={isDialogOpen} isGameEnd />
+			)}
 		</>
 	);
 };
