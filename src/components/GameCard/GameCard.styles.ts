@@ -10,6 +10,5 @@ export const StyledCard = withStyles(Card, (theme: Theme, props: any) => ({
 		justifyContent: 'center',
 		padding: 1,
 		cursor: 'pointer',
-		animation: `$cardRotate 2s linear`,
 	},
 }));
