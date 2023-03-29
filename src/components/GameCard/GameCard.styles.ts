@@ -1,7 +1,7 @@
 import { withStyles } from 'tss-react/mui';
 import { Card } from '@mui/material';
 
-export const StyledCard = withStyles(Card, (theme: Theme, props: any) => ({
+export const StyledCard = withStyles(Card, () => ({
 	root: {
 		maxWidth: '100%',
 		aspectRatio: '1',

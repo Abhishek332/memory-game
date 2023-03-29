@@ -1,7 +1,7 @@
 import { createTheme } from '@mui/material/styles';
 import { purple, lime, brown } from '@mui/material/colors';
 
-export const theme: Theme = createTheme({
+export const theme = createTheme({
 	palette: {
 		primary: {
 			main: purple['400'],
