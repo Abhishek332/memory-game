@@ -39,6 +39,7 @@ const AlertDialog: React.FC<AlertDialogType> = ({
 				{text && <DialogContentText align="center">{text}</DialogContentText>}
 				{isGameEnd && (
 					<Box
+						data-testid="game-restart-button"
 						onClick={() => window.location.reload()}
 						sx={{ color: 'blue', cursor: 'pointer' }}
 					>
