@@ -21,7 +21,7 @@ const GameCard: React.FC<GameCardProps> = ({
 						sx={{ objectFit: 'contain', pointerEvent: 'none' }}
 					/>
 				</StyledCard>
-				<StyledCard onClick={() => markActive(cardIndex)} raised>
+				<StyledCard data-testid="back-card" onClick={() => markActive(cardIndex)} raised>
 					<CardMedia
 						component="img"
 						image="/images/bulb.png"
