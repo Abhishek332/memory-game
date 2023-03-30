@@ -3,8 +3,8 @@ import { Typography } from '@mui/material';
 
 const Head = () => {
 	return (
-		<StyledHead elevation={3}>
-			<Typography variant="h4" align="center">
+		<StyledHead>
+			<Typography variant="h5" align="center">
 				MEMORY GAME
 			</Typography>
 		</StyledHead>
