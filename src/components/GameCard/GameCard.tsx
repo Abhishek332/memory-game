@@ -21,7 +21,11 @@ const GameCard: React.FC<GameCardProps> = ({
 						sx={{ objectFit: 'contain', pointerEvent: 'none' }}
 					/>
 				</StyledCard>
-				<StyledCard data-testid="back-card" onClick={() => markActive(cardIndex)} raised>
+				<StyledCard
+					data-testid="back-card"
+					onClick={() => markActive(cardIndex)}
+					raised
+				>
 					<CardMedia
 						component="img"
 						image="/images/bulb.png"
@@ -37,7 +41,8 @@ const GameCard: React.FC<GameCardProps> = ({
 
 export default GameCard;
 
-interface GameCardProps extends CardType {
+interface GameCardProps extends Omit<CardType, 'variant'> {
+	variant?: string;
 	markActive: markActiveType;
 	cardIndex: number;
 }
