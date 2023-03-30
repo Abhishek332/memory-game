@@ -73,7 +73,8 @@ const GameContainer = () => {
 	return (
 		<>
 			<Typography variant="h5" align="center" sx={{ my: 1 }}>
-				<strong>Game Points: </strong> {score}
+				<strong>Game Points: </strong>
+				<span data-testid="game-score">{score}</span>
 			</Typography>
 			<Box display="flex" justifyContent="center">
 				<Grid container columns={5} spacing={2} sx={{ maxWidth: 800 }}>
