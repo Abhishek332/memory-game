@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { CARDS_DATA } from '../../utils/constants/cards';
+import {
+	CARDS_INACTIVE_TIMER,
+	CARDS_FLASH_TIMER,
+	CARD_MATCH_DELAY,
+	ALERT_DIALOG_TIMEOUT,
+} from '../../utils/constants/timers';
+import { getRandomCards } from '../../utils/utils';
 import GameCard from '../GameCard/GameCard';
 import { Box, Grid, Typography } from '@mui/material';
 import AlertDialog from '../AlertDialog/AlertDialog';
 
 const GameContainer = () => {
-	const [cards, setCards] = useState<CardType[]>(
-		CARDS_DATA.sort(() => Math.random() - 0.5)
-	);
+	const randomCards: CardType[] = getRandomCards(CARDS_DATA);
+	const [cards, setCards] = useState<CardType[]>(randomCards);
 	const [previousClickedCard, setPreviousClickedCard] =
 		useState<previousClickedCardType | null>(null);
 	const [score, setScore] = useState<number>(0);
@@ -31,7 +37,7 @@ const GameContainer = () => {
 		}, timer);
 	};
 
-	useEffect(() => flashScreen(2500), []);
+	useEffect(() => flashScreen(CARDS_INACTIVE_TIMER), []);
 
 	const matchCards = (clickedCardIndex: number) => {
 		if (cards[clickedCardIndex].variant === previousClickedCard?.variant) {
@@ -39,11 +45,15 @@ const GameContainer = () => {
 			if (score < 9) {
 				setTimeout(() => {
 					setIsDialogOpen(false);
-				}, 800);
+				}, ALERT_DIALOG_TIMEOUT);
 			}
 			setScore((prevScore) => prevScore + 1);
 		} else {
-			flashScreen(100, previousClickedCard?.index, clickedCardIndex);
+			flashScreen(
+				CARDS_FLASH_TIMER,
+				previousClickedCard?.index,
+				clickedCardIndex
+			);
 		}
 	};
 
@@ -61,7 +71,7 @@ const GameContainer = () => {
 			setTimeout(() => {
 				matchCards(clickedCardIndex);
 				setPreviousClickedCard(null);
-			}, 360);
+			}, CARD_MATCH_DELAY);
 		} else {
 			setPreviousClickedCard({
 				variant: cards[clickedCardIndex].variant,
