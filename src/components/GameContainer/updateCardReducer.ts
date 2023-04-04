@@ -33,5 +33,20 @@ export const updateCardReducer: updateCardReducerType = (state, action) => {
 
 			return tempCards;
 		}
+
+		case 'markCardsMatched': {
+			const tempCards = [...state];
+
+			tempCards[action.currentClickedCardIndex] = {
+				...tempCards[action.currentClickedCardIndex],
+				isMatched: true,
+			};
+			tempCards[action.previousClickedCardIndex] = {
+				...tempCards[action.previousClickedCardIndex],
+				isMatched: true,
+			};
+
+			return tempCards;
+		}
 	}
 };

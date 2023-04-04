@@ -55,6 +55,11 @@ const GameContainer = () => {
 
 	const matchCards = (clickedCardIndex: number) => {
 		if (cards[clickedCardIndex].variant === previousClickedCard?.variant) {
+			dispatch({
+				type: 'markCardsMatched',
+				currentClickedCardIndex: clickedCardIndex,
+				previousClickedCardIndex: previousClickedCard.index,
+			});
 			setIsDialogOpen(true);
 			if (score < 9) {
 				setTimeout(() => {
