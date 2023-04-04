@@ -1,13 +1,15 @@
-import { StyledHead } from './Head.styles';
-import { Typography } from '@mui/material';
+import { useStyles } from './Head.styles';
+import { Container, Typography } from '@mui/material';
 
 const Head = () => {
+	const { classes } = useStyles();
+
 	return (
-		<StyledHead>
+		<Container className={classes.head}>
 			<Typography variant="h5" align="center">
 				MEMORY GAME
 			</Typography>
-		</StyledHead>
+		</Container>
 	);
 };
 
