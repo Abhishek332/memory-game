@@ -22,6 +22,7 @@ export const useStyles = makeStyles({
 			aspectRatio: '1',
 			background:
 				'url(/images/matched.png) center no-repeat, rgb( 0 0 0 / 59%)',
+			borderRadius: 4,
 		},
 	},
 }));
