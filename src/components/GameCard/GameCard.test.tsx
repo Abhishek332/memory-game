@@ -19,9 +19,9 @@ describe('GameCard', () => {
 	it('should add class conditionaly', () => {
 		render(<GameCard {...mockProps2} />);
 
-		expect(screen.getByTestId('front-card')).toHaveClass(
-			'css-st7ko9-MuiPaper-root-MuiCard-root-GameCard-root-GameCard-matched'
-		);
+		expect(
+			screen.getByTestId('front-card').classList.value.includes('matched')
+		).toEqual(true);
 	});
 });
 
