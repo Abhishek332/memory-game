@@ -50,7 +50,6 @@ const GameCard: React.FC<GameCardProps> = ({
 export default GameCard;
 
 interface GameCardProps extends Omit<CardType, 'variant'> {
-	variant?: string;
 	isMatched: boolean;
 	markActive: markActiveType;
 	cardIndex: number;

@@ -5,7 +5,7 @@ import React, {
 	useMemo,
 	useCallback,
 } from 'react';
-import { CARDS_DATA } from '../../utils/constants/cards';
+import { CARDS_ARRAY } from '../../utils/constants/cards';
 import {
 	CARDS_INACTIVE_TIMER,
 	CARDS_FLASH_TIMER,
@@ -19,7 +19,10 @@ import AlertDialog from '../AlertDialog/AlertDialog';
 import { updateCardReducer } from './updateCardReducer';
 
 const GameContainer = () => {
-	const randomCards: CardType[] = useMemo(() => getRandomCards(CARDS_DATA), []);
+	const randomCards: CardType[] = useMemo(
+		() => getRandomCards(CARDS_ARRAY),
+		[]
+	);
 	const [cards, dispatch] = useReducer(updateCardReducer, randomCards);
 
 	const [previousClickedCard, setPreviousClickedCard] =
