@@ -2,12 +2,13 @@ import React from 'react';
 import {
 	Box,
 	Dialog,
+	DialogTitle,
 	DialogContent,
 	DialogContentText,
 	Slide,
 	Typography,
 } from '@mui/material';
-import { StyledDialogTitle } from './AlertDialog.styles';
+import { useStyles } from './AlertDialog.styles';
 import { TransitionProps } from '@mui/material/transitions';
 
 const AlertDialogSlide = React.forwardRef(function Transition(
@@ -25,6 +26,8 @@ const AlertDialog: React.FC<AlertDialogType> = ({
 	isDialogOpen,
 	isGameEnd,
 }) => {
+	const { classes } = useStyles();
+
 	return (
 		<Dialog
 			open={isDialogOpen}
@@ -32,13 +35,14 @@ const AlertDialog: React.FC<AlertDialogType> = ({
 			keepMounted
 			aria-describedby="alert-dialog-slide-description"
 		>
-			<StyledDialogTitle>
+			<DialogTitle className={classes.title}>
 				{isGameEnd ? `🏁  ${title}  🏁` : title}
-			</StyledDialogTitle>
+			</DialogTitle>
 			<DialogContent>
 				{text && <DialogContentText align="center">{text}</DialogContentText>}
 				{isGameEnd && (
 					<Box
+						data-testid="game-restart-button"
 						onClick={() => window.location.reload()}
 						sx={{ color: 'blue', cursor: 'pointer' }}
 					>
