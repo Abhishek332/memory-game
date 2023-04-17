@@ -1,5 +1,11 @@
-import React, { useState, useEffect } from 'react';
-import { CARDS_DATA } from '../../utils/constants/cards';
+import React, {
+	useState,
+	useEffect,
+	useReducer,
+	useMemo,
+	useCallback,
+} from 'react';
+import { CARDS_ARRAY } from '../../utils/constants/cards';
 import {
 	CARDS_INACTIVE_TIMER,
 	CARDS_FLASH_TIMER,
@@ -10,37 +16,53 @@ import { getRandomCards } from '../../utils/utils';
 import GameCard from '../GameCard/GameCard';
 import { Box, Grid, Typography } from '@mui/material';
 import AlertDialog from '../AlertDialog/AlertDialog';
+import { updateCardReducer } from './updateCardReducer';
 
 const GameContainer = () => {
-	const randomCards: CardType[] = getRandomCards(CARDS_DATA);
-	const [cards, setCards] = useState<CardType[]>(randomCards);
+	const randomCards: CardType[] = useMemo(
+		() => getRandomCards(CARDS_ARRAY),
+		[]
+	);
+	const [cards, dispatch] = useReducer(updateCardReducer, randomCards);
+
 	const [previousClickedCard, setPreviousClickedCard] =
 		useState<previousClickedCardType | null>(null);
 	const [score, setScore] = useState<number>(0);
 	const [isDialogOpen, setIsDialogOpen] = useState<boolean>(false);
 
-	const flashScreen = (timer: number, index1?: number, index2?: number) => {
-		setTimeout(() => {
-			setCards((prevCards) => {
-				if (index1 !== undefined && index2 !== undefined) {
-					const tempCards = [...prevCards];
-					tempCards[index1] = { ...tempCards[index1], isActive: false };
-					tempCards[index2] = { ...tempCards[index2], isActive: false };
-					return tempCards;
+	const flashScreen = useCallback(
+		(
+			timer: number,
+			previousClickedCardIndex?: number,
+			currentClickedCardIndex?: number
+		) => {
+			setTimeout(() => {
+				if (
+					previousClickedCardIndex !== undefined &&
+					currentClickedCardIndex !== undefined
+				) {
+					dispatch({
+						type: 'makeTwoDeactive',
+						previousClickedCardIndex,
+						currentClickedCardIndex,
+					});
 				} else {
-					return prevCards.map((cardData) => ({
-						...cardData,
-						isActive: false,
-					}));
+					dispatch({ type: 'makeAllDeactive' });
 				}
-			});
-		}, timer);
-	};
+			}, timer);
+		},
+		[]
+	);
 
-	useEffect(() => flashScreen(CARDS_INACTIVE_TIMER), []);
+	useEffect(() => flashScreen(CARDS_INACTIVE_TIMER), [flashScreen]);
 
 	const matchCards = (clickedCardIndex: number) => {
 		if (cards[clickedCardIndex].variant === previousClickedCard?.variant) {
+			dispatch({
+				type: 'markCardsMatched',
+				currentClickedCardIndex: clickedCardIndex,
+				previousClickedCardIndex: previousClickedCard.index,
+			});
 			setIsDialogOpen(true);
 			if (score < 9) {
 				setTimeout(() => {
@@ -58,14 +80,7 @@ const GameContainer = () => {
 	};
 
 	const markActive: markActiveType = (clickedCardIndex) => {
-		setCards((prevCards) => {
-			const tempCards = [...prevCards];
-			tempCards[clickedCardIndex] = {
-				...tempCards[clickedCardIndex],
-				isActive: true,
-			};
-			return tempCards;
-		});
+		dispatch({ type: 'makeOneActive', clickedCardIndex });
 
 		if (previousClickedCard !== null) {
 			setTimeout(() => {

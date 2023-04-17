@@ -1,18 +1,25 @@
 import React from 'react';
-import { StyledCard } from './GameCard.styles';
+import { useStyles } from './GameCard.styles';
 import ReactCardFlip from 'react-card-flip';
-import { CardMedia, Grid } from '@mui/material';
+import { Card, CardMedia, Grid } from '@mui/material';
 
 const GameCard: React.FC<GameCardProps> = ({
 	img,
 	isActive,
+	isMatched,
 	markActive,
 	cardIndex,
 }) => {
+	const { classes } = useStyles();
+
 	return (
 		<Grid item xs={1}>
 			<ReactCardFlip flipDirection="horizontal" isFlipped={!isActive}>
-				<StyledCard raised>
+				<Card
+					className={`${classes.root} ${isMatched ? classes.matched : ''}`}
+					data-testid="front-card"
+					raised
+				>
 					<CardMedia
 						component="img"
 						image={img}
@@ -20,8 +27,9 @@ const GameCard: React.FC<GameCardProps> = ({
 						height="75%"
 						sx={{ objectFit: 'contain', pointerEvent: 'none' }}
 					/>
-				</StyledCard>
-				<StyledCard
+				</Card>
+				<Card
+					className={classes.root}
 					data-testid="back-card"
 					onClick={() => markActive(cardIndex)}
 					raised
@@ -33,7 +41,7 @@ const GameCard: React.FC<GameCardProps> = ({
 						height="75%"
 						sx={{ objectFit: 'contain', pointerEvent: 'none' }}
 					/>
-				</StyledCard>
+				</Card>
 			</ReactCardFlip>
 		</Grid>
 	);
@@ -42,7 +50,7 @@ const GameCard: React.FC<GameCardProps> = ({
 export default GameCard;
 
 interface GameCardProps extends Omit<CardType, 'variant'> {
-	variant?: string;
+	isMatched: boolean;
 	markActive: markActiveType;
 	cardIndex: number;
 }

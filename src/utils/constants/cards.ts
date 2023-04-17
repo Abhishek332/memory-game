@@ -11,105 +11,65 @@ const CARD_VARIANT = {
 	GITHUB: 'github',
 };
 
-export const CARDS_DATA: CardType[] = [
+export const CARDS_ARRAY: CardType[] = [
 	{
 		img: '/images/angular.png',
 		isActive: true,
-		variant: CARD_VARIANT.ANGULAR,
-	},
-	{
-		img: '/images/angular.png',
-		isActive: true,
+		isMatched: false,
 		variant: CARD_VARIANT.ANGULAR,
 	},
 	{
 		img: '/images/react.png',
 		isActive: true,
-		variant: CARD_VARIANT.REACT,
-	},
-	{
-		img: '/images/react.png',
-		isActive: true,
+		isMatched: false,
 		variant: CARD_VARIANT.REACT,
 	},
 	{
 		img: '/images/scss.png',
 		isActive: true,
-		variant: CARD_VARIANT.SCSS,
-	},
-	{
-		img: '/images/scss.png',
-		isActive: true,
+		isMatched: false,
 		variant: CARD_VARIANT.SCSS,
 	},
 	{
 		img: '/images/nodejs.png',
 		isActive: true,
-		variant: CARD_VARIANT.NODEJS,
-	},
-	{
-		img: '/images/nodejs.png',
-		isActive: true,
+		isMatched: false,
 		variant: CARD_VARIANT.NODEJS,
 	},
 	{
 		img: '/images/html.png',
 		isActive: true,
-		variant: CARD_VARIANT.HTML,
-	},
-	{
-		img: '/images/html.png',
-		isActive: true,
+		isMatched: false,
 		variant: CARD_VARIANT.HTML,
 	},
 	{
 		img: '/images/css.png',
 		isActive: true,
-		variant: CARD_VARIANT.CSS,
-	},
-	{
-		img: '/images/css.png',
-		isActive: true,
+		isMatched: false,
 		variant: CARD_VARIANT.CSS,
 	},
 	{
 		img: '/images/js.png',
 		isActive: true,
-		variant: CARD_VARIANT.JS,
-	},
-	{
-		img: '/images/js.png',
-		isActive: true,
+		isMatched: false,
 		variant: CARD_VARIANT.JS,
 	},
 	{
 		img: '/images/mysql.png',
 		isActive: true,
-		variant: CARD_VARIANT.MYSQL,
-	},
-	{
-		img: '/images/mysql.png',
-		isActive: true,
+		isMatched: false,
 		variant: CARD_VARIANT.MYSQL,
 	},
 	{
 		img: '/images/github.png',
 		isActive: true,
-		variant: CARD_VARIANT.GITHUB,
-	},
-	{
-		img: '/images/github.png',
-		isActive: true,
+		isMatched: false,
 		variant: CARD_VARIANT.GITHUB,
 	},
 	{
 		img: '/images/vue.png',
 		isActive: true,
-		variant: CARD_VARIANT.VUE,
-	},
-	{
-		img: '/images/vue.png',
-		isActive: true,
+		isMatched: false,
 		variant: CARD_VARIANT.VUE,
 	},
 ];

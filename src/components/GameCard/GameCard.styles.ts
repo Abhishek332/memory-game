@@ -1,7 +1,8 @@
-import { withStyles } from 'tss-react/mui';
-import { Card } from '@mui/material';
+import { makeStyles } from 'tss-react/mui';
 
-export const StyledCard = withStyles(Card, () => ({
+export const useStyles = makeStyles({
+	name: 'GameCard',
+})(() => ({
 	root: {
 		maxWidth: '100%',
 		aspectRatio: '1',
@@ -10,5 +11,18 @@ export const StyledCard = withStyles(Card, () => ({
 		justifyContent: 'center',
 		padding: 1,
 		cursor: 'pointer',
+	},
+	matched: {
+		'&::before': {
+			content: `''`,
+			position: 'absolute',
+			top: 0,
+			left: 0,
+			height: '100%',
+			aspectRatio: '1',
+			background:
+				'url(/images/matched.png) center no-repeat, rgb( 0 0 0 / 59%)',
+			borderRadius: 4,
+		},
 	},
 }));
