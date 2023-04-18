@@ -20,5 +20,16 @@ describe('Memory Game End-to-End Test', () => {
 		cy.get('[data-testid*="game-card-html"]').click({
 			multiple: true,
 		});
+		cy.findByTestId('AlertDialog is open').should('exist');
+		cy.findByTestId('AlertDialog is close').should('exist');
+	});
+
+	it('should flip the card again, if cards not matched', () => {
+		cy.get('[data-testid*=" is not active"]').should('have.length', 20);
+		cy.wait(500);
+		cy.get('[data-testid*="game-card-angular"]').first().click();
+		cy.wait(500);
+		cy.get('[data-testid*="game-card-react"]').first().click();
+		cy.get('[data-testid*=" is not active"]').should('have.length', 20);
 	});
 });
