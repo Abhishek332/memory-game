@@ -9,11 +9,18 @@ const GameCard: React.FC<GameCardProps> = ({
 	isMatched,
 	markActive,
 	cardIndex,
+	variant,
 }) => {
 	const { classes } = useStyles();
 
 	return (
-		<Grid item xs={1}>
+		<Grid
+			data-testid={`game-card-${variant} is ${
+				isActive ? 'active' : 'not active'
+			}`}
+			item
+			xs={1}
+		>
 			<ReactCardFlip flipDirection="horizontal" isFlipped={!isActive}>
 				<Card
 					className={`${classes.root} ${isMatched ? classes.matched : ''}`}
@@ -49,7 +56,7 @@ const GameCard: React.FC<GameCardProps> = ({
 
 export default GameCard;
 
-interface GameCardProps extends Omit<CardType, 'variant'> {
+interface GameCardProps extends CardType {
 	isMatched: boolean;
 	markActive: markActiveType;
 	cardIndex: number;
