@@ -33,7 +33,6 @@ const mockProps1 = {
 	markActive: mockMarkActive,
 	cardIndex: 3,
 	isMatched: false,
-	variant: '',
 };
 
 const mockProps2 = {

@@ -26,14 +26,12 @@
     "build": "react-scripts build",
     "test": "react-scripts test --watchAll",
     "test-coverage": "react-scripts test --watchAll --coverage",
-    "eject": "react-scripts eject",
-    "cypress:open": "cypress open"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
       "react-app",
-      "react-app/jest",
-      "plugin:cypress/recommended"
+      "react-app/jest"
     ]
   },
   "browserslist": {
@@ -50,10 +48,5 @@
   },
   "jest": {
     "resetMocks": false
-  },
-  "devDependencies": {
-    "@testing-library/cypress": "^9.0.0",
-    "cypress": "^12.9.0",
-    "eslint-plugin-cypress": "^2.13.2"
   }
 }
