@@ -7,7 +7,7 @@ describe('Memory Game End-to-End Test', () => {
 		cy.findByRole('heading', { name: /memory game/i }).should('exist');
 		cy.findByText('Game Points:').should('exist');
 		cy.findByTestId('game-score').should('exist');
-		cy.findByTestId('AlertDialog is close').should('exist');
+		cy.findByTestId('AlertDialog').should('not.be.visible');
 	});
 
 	it('should contain 20 cards', () => {
@@ -20,9 +20,9 @@ describe('Memory Game End-to-End Test', () => {
 		cy.get('[data-testid*="game-card-html"]').click({
 			multiple: true,
 		});
-		cy.findByTestId('AlertDialog is open').should('exist');
+		cy.findByTestId('AlertDialog').should('be.visible');
 		cy.findByText('Card Matched').should('exist');
-		cy.findByTestId('AlertDialog is close').should('exist');
+		cy.findByTestId('AlertDialog').should('not.be.visible');
 	});
 
 	it('should flip the card again, if cards not matched', () => {
@@ -78,7 +78,7 @@ describe('Memory Game End-to-End Test', () => {
 		});
 
 		cy.findByTestId('game-score').should('have.text', 10);
-		cy.findByTestId('AlertDialog is open').should('exist');
+		cy.findByTestId('AlertDialog').should('be.visible');
 		cy.findByText('🏁 Game End 🏁').should('exist');
 
 		cy.findByText('Click here to begin the new Game').click();
