@@ -21,6 +21,7 @@ describe('Memory Game End-to-End Test', () => {
 			multiple: true,
 		});
 		cy.findByTestId('AlertDialog is open').should('exist');
+    cy.findByText('Card Matched').should('exist');
 		cy.findByTestId('AlertDialog is close').should('exist');
 	});
 
