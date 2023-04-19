@@ -14,13 +14,7 @@ const GameCard: React.FC<GameCardProps> = ({
 	const { classes } = useStyles();
 
 	return (
-		<Grid
-			data-testid={`game-card-${variant} is ${
-				isActive ? 'active' : 'not active'
-			}`}
-			item
-			xs={1}
-		>
+		<Grid data-testid={`game-card-${variant}`} item xs={1}>
 			<ReactCardFlip flipDirection="horizontal" isFlipped={!isActive}>
 				<Card
 					className={`${classes.root} ${isMatched ? classes.matched : ''}`}
