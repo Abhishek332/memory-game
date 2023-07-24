@@ -30,6 +30,7 @@ const AlertDialog: React.FC<AlertDialogType> = ({
 
 	return (
 		<Dialog
+			data-testid="AlertDialog"
 			open={isDialogOpen}
 			TransitionComponent={AlertDialogSlide}
 			keepMounted
