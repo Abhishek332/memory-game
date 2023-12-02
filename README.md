@@ -17,3 +17,10 @@ Install the node_modules require for the project.
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+
+## Can check the unit test result using -
+### `npm run test`
+
+## Can run the e2e test using - 
+### `npm run cypress:open`
