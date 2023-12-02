@@ -19,8 +19,9 @@ Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 
-## Can check the unit test result using -
+## Other Available Scripts -
 ### `npm run test`
+Runs unit test.
 
-## Can run the e2e test using - 
 ### `npm run cypress:open`
+Runs e2e test.
