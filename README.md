@@ -1,27 +1,22 @@
-# What the project is all about?
+## `Welcome to the Memory Game –`
+a thrilling ReactJS and TypeScript project that puts your memory to the test! Designed to provide both entertainment and cognitive stimulation, this game challenges players to match pairs of identical cards before they flip back.
 
-This is a memory game, when you come on the page first you will see the cards positioned at random index. You have to see cards and memorized them.
-After a certain time call cards will flip.
-Every type of card have a pair card.
-You have to click on 1 card and the next clicked card should be same if it is same then you get score otherwise both cards will flip.
-Game will be continue untill all cards not match with its pair card.
+# `Features:`
+Dynamic rendering of pairs of identical cards at random positions.
+Intuitive user interface for seamless gameplay experience.
+Responsive design ensures compatibility across various devices.
+Comprehensive testing with Cypress to ensure reliability and functionality.
 
-## How you will run the project in localhost?
-
-In the project directory, you can run:
-
-### `npm install`
-Install the node_modules require for the project.
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+# `How to Play:`
+- Click on any card to reveal its image.
+- Remember the position and image of each card.
+- Click on another card to reveal its image.
+- If the two cards match, they remain face-up and you earn points.
+- If the cards don't match, they flip back and you can try again.
+  
+Experience the thrill of memory challenges and embark on a delightful gaming adventure with the Memory Game. Happy matching!
 
 
-## Other Available Scripts -
-### `npm run test`
-Runs unit test.
 
-### `npm run cypress:open`
-Runs e2e test.
+
+
