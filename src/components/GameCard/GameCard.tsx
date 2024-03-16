@@ -1,7 +1,7 @@
-import React from 'react';
-import { useStyles } from './GameCard.styles';
-import ReactCardFlip from 'react-card-flip';
 import { Card, CardMedia, Grid } from '@mui/material';
+import React from 'react';
+import ReactCardFlip from 'react-card-flip';
+import { useStyles } from './GameCard.styles';
 
 const GameCard: React.FC<GameCardProps> = ({
 	img,
@@ -23,7 +23,7 @@ const GameCard: React.FC<GameCardProps> = ({
 				>
 					<CardMedia
 						component="img"
-						image={img}
+						image={process.env.PUBLIC_URL + img}
 						alt={img}
 						height="75%"
 						sx={{ objectFit: 'contain', pointerEvent: 'none' }}
@@ -37,7 +37,7 @@ const GameCard: React.FC<GameCardProps> = ({
 				>
 					<CardMedia
 						component="img"
-						image="/images/bulb.png"
+						image={process.env.PUBLIC_URL + "/images/bulb.png"}
 						alt="bulb"
 						height="75%"
 						sx={{ objectFit: 'contain', pointerEvent: 'none' }}
