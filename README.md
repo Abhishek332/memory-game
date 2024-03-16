@@ -1,13 +1,13 @@
-## `Welcome to the Memory Game –`
+# `Welcome to the Memory Game –`
 a thrilling ReactJS and TypeScript project that puts your memory to the test! Designed to provide both entertainment and cognitive stimulation, this game challenges players to match pairs of identical cards before they flip back.
 
-# `Features:`
+## `Features:`
 Dynamic rendering of pairs of identical cards at random positions.
 Intuitive user interface for seamless gameplay experience.
 Responsive design ensures compatibility across various devices.
 Comprehensive testing with Cypress to ensure reliability and functionality.
 
-# `How to Play:`
+## `How to Play:`
 - Click on any card to reveal its image.
 - Remember the position and image of each card.
 - Click on another card to reveal its image.
